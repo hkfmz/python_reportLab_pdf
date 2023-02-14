@@ -24,6 +24,26 @@ import qrcode
 
 I=1
 
+def creat_qrcode2(fichier,data,color=["black","white"]):
+	global I
+	if color:
+		qr = qrcode.QRCode(version = 1,
+			box_size = 10,
+			border = 3)
+
+		# Adding data to the instance 'qr'
+		qr.add_data(data)
+		qr.make(fit = True)
+		img = qr.make_image(fill_color =color[0],
+			back_color = color[1])
+	else:
+		img = qrcode.make(data)
+
+	g='codes/' + fichier + str(I) + ".png"
+	img.save(g)
+	I +=1
+	return g
+
 def creat_qrcode(fichier,data):
     global I
     img = qrcode.make(data)
@@ -132,6 +152,8 @@ can.drawString(450, 212, "20 000 XAF")
 da ="http//dgrp.cg/valid_atp/ixnnfkndkf1"
 file = creat_qrcode("QRcode", da)
 add_image2(file, can, x=70, y=30, w=90, h=90)
+
+file = creat_qrcode2("QRcode", da, color=["green","white"])
 add_image2(file, can, x=90, y=50, w=90, h=90)
 
 can.save() 
