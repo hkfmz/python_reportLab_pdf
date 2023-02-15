@@ -100,7 +100,7 @@ def writeExistPDF(soket,existFile,destFile):
 
 
 
-file_pdf="exist_pdf/Facture_10.pdf"
+file_pdf="exist_pdf/00001.pdf"
 
 pdf = PdfReader(file_pdf)
 w=pdf.pages[0].MediaBox[2]
@@ -111,37 +111,55 @@ h=pdf.pages[0].MediaBox[3]
 packet = io.BytesIO()
 can = canvas.Canvas(packet, pagesize=letter)
 #~ can.setFillColorRGB(1, 0, 0)
-can.setFont("Times-Roman", 12)
+pdfmetrics.registerFont(TTFont('hegelmotokoua', 'CenturyGothic.ttf'))
+can.setFont("hegelmotokoua", 14)
 can.translate(cm,cm)
 
 can.setPageSize((w,h))
 
-can.drawString(105, 530, "Brel ASSEH")
+can.drawString(172, 437, "GARAGE DORDY")
 
-can.drawString(105, 512, "242 06 846 34 99")
+can.drawString(115, 416, "175, Rue KITOKO, Plateau de 15 ans Bvlle")
 
-can.drawString(105, 495, "brel.asseh@gmail.com")
+can.drawString(140, 395, "242067363636")
 
+can.drawString(122, 378, "brel.asseh@gmail.com")
 
-can.setFont("Times-Roman", 15)
-can.drawString(422, 535, "F_0000012456")
+can.drawString(95, 351, "P2025110003038274")
+
+can.drawString(108, 328, "CG-BZV-01-2019-B12-10047")
+
+can.drawString(175, 303, "AG-XXXX-XXX")
+
+can.drawString(135, 271, "A /MTACMM-DGTT-DTUR")
+
+can.drawString(205, 240, "PETITE")
+
+can.drawString(175, 220, "GARAGE AUTOMOBILE")
+
+can.drawString(198, 181, "05 / 03 / 2023")
+
+can.drawString(198, 163, "05 / 03 / 2023")
+
+# can.setFont("Times-Roman", 15)
+# can.drawString(422, 535, "F_0000012456")
 
 #~ date
-can.drawString(385, 495, "10 décembre 2022")
+# can.drawString(385, 495, "10 décembre 2022")
 
-pdfmetrics.registerFont(TTFont('helvetica', 'Helvetica.ttf'))
-can.setFont("helvetica", 11)
-can.setFillColorRGB(0, 0,0)
+# pdfmetrics.registerFont(TTFont('helvetica', 'Helvetica.ttf'))
+# can.setFont("helvetica", 11)
+# can.setFillColorRGB(0, 0,0)
 
 
-can.drawString(115, 400, "Autotorisation de transfansport  pour voyageur 2022")
-can.drawString(60, 400, "01")
-can.drawString(408, 400, "20 000")
-can.drawString(458, 400, "20 000")
+# can.drawString(115, 400, "Autotorisation de transfansport  pour voyageur 2022")
+# can.drawString(60, 400, "01")
+# can.drawString(408, 400, "20 000")
+# can.drawString(458, 400, "20 000")
 
 #~ can.drawString(250, 310, "0000000123456")
 can.setFont("Times-Roman", 16)
-can.drawString(450, 212, "20 000 XAF")
+# can.drawString(450, 212, "20 000 XAF")
 
 #~ can.setFont("Times-Roman", 22)
 
@@ -151,10 +169,10 @@ can.drawString(450, 212, "20 000 XAF")
 #~ =================== QR
 da ="http//dgrp.cg/valid_atp/ixnnfkndkf1"
 file = creat_qrcode("QRcode", da)
-add_image2(file, can, x=70, y=30, w=90, h=90)
+add_image2(file, can, x=484, y=664, w=85, h=85)
 
 file = creat_qrcode2("QRcode", da, color=["green","white"])
-add_image2(file, can, x=90, y=50, w=90, h=90)
+add_image2(file, can, x=14, y=38, w=50, h=50)
 
 can.save() 
 
