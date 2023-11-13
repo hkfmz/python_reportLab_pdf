@@ -100,7 +100,7 @@ def writeExistPDF(soket,existFile,destFile):
 
 
 
-file_pdf="exist_pdf/00001.pdf"
+file_pdf="exist_pdf/000001.pdf"
 
 pdf = PdfReader(file_pdf)
 w=pdf.pages[0].MediaBox[2]
@@ -117,29 +117,39 @@ can.translate(cm,cm)
 
 can.setPageSize((w,h))
 
-can.drawString(172, 437, "GARAGE DORDY")
+can.drawString(182, 426, "GARAGE DORDY")
 
-can.drawString(115, 416, "175, Rue KITOKO, Plateau de 15 ans Bvlle")
+can.drawString(125, 405, "175, Rue KITOKO, Plateau de 15 Ans Bvlle")
 
-can.drawString(140, 395, "242067363636")
+can.drawString(148, 380, "242067363636")
 
-can.drawString(122, 378, "brel.asseh@gmail.com")
+can.drawString(140, 362, "brel.asseh@gmail.com")
 
-can.drawString(95, 351, "P2025110003038274")
+can.drawString(95, 336, "P2025110003038274")
 
-can.drawString(108, 328, "CG-BZV-01-2019-B12-10047")
+can.drawString(108, 313, "CG-BZV-01-2019-B12-10047")
 
-can.drawString(175, 303, "AG-XXXX-XXX")
+can.drawString(175, 289, "AG-XXXX-XXX")
 
-can.drawString(135, 271, "A /MTACMM-DGTT-DTUR")
+can.drawString(135, 262, "A /MTACMM-DGTT-DTUR")
 
-can.drawString(205, 240, "PETITE")
+can.drawString(205, 230, "PETITE")
 
-can.drawString(175, 220, "GARAGE AUTOMOBILE")
+can.drawString(175, 211, "GARAGE AUTOMOBILE")
 
-can.drawString(198, 181, "05 / 03 / 2023")
+can.drawString(218, 183, "05 / 03 / 2023")
 
-can.drawString(198, 163, "05 / 03 / 2023")
+can.drawString(204, 150, "05 / 03 / 2023")
+
+
+pdfmetrics.registerFont(TTFont('asseh', 'Helvetica.ttf'))
+can.setFont("asseh", 13)
+
+file = "codes\Signature.png"
+add_image2(file, can, x=360, y=96, w=170, h=170)
+
+
+can.drawString(364, 80, "Lionel MESSI")
 
 # can.setFont("Times-Roman", 15)
 # can.drawString(422, 535, "F_0000012456")
@@ -172,7 +182,7 @@ file = creat_qrcode("QRcode", da)
 add_image2(file, can, x=484, y=664, w=85, h=85)
 
 file = creat_qrcode2("QRcode", da, color=["green","white"])
-add_image2(file, can, x=14, y=38, w=50, h=50)
+add_image2(file, can, x=24, y=36, w=50, h=50)
 
 can.save() 
 
